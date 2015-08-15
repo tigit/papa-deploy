@@ -1,0 +1,26 @@
+#! /bin/sh
+# Reload the OpenSSH server when an interface comes up, to allow it to start
+# listening on new addresses.
+
+set -e
+
+# Don't bother to restart sshd when lo is configured.
+if [ "$IFACE" = lo ]; then
+	exit 0
+fi
+
+# Only run from ifup.
+if [ "$MODE" != start ]; then
+	exit 0
+fi
+
+# OpenSSH only cares about inet and inet6. Get ye gone, strange people
+# still using ipx.
+if [ "$ADDRFAM" != inet ] && [ "$ADDRFAM" != inet6 ]; then
+	exit 0
+fi
+
+#mount -t cifs -o uid=1000,gid=1000,username="lin",password="q1W@e3R$" //192.168.26.1/share /home/devel/share
+mount -t cifs -o uid=1001,gid=1001,username="lin",password="q1W@e3R$" //192.168.26.1/papa /data/www
+
+exit 0
