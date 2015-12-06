@@ -63,7 +63,7 @@ function install_base
     F_LOG_EXIT " INIT HOSTNAME ${host_name} " ${log_file}
     
 	apt-get update && \
-    apt-get install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential autoconf git wget lrzsz
+    apt-get install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential autoconf git wget lrzsz unzip
     F_LOG_EXIT " 安装基础库 " ${log_file}
 
     F_SAVE_STEP "INSTALL BASE" ${step_file}
@@ -91,7 +91,7 @@ function download_pkgs
     wget http://cn2.php.net/distributions/php-5.6.16.tar.bz2 -P ./pkg && \
     wget http://download.redis.io/releases/redis-3.0.5.tar.gz -P ./pkg && \
     wget http://keplerproject.github.io/luarocks/releases/luarocks-2.2.2.tar.gz -P ./pkg && \
-    wget https://openresty.org/download/ngx_openresty-1.9.3.2.tar.gz -P ./pkg && \
+    wget https://openresty.org/download/ngx_openresty-1.9.3.2.tar.gz -P ./pkg
     F_LOG_EXIT " 下载软件包 " ${log_file}
     
     F_SAVE_STEP "DOWNLOAD PKGS" ${step_file}
