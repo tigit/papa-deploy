@@ -63,7 +63,7 @@ function install_base
     F_LOG_EXIT " INIT HOSTNAME ${host_name} " ${log_file}
     
 	apt-get update && \
-    apt-get install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential autoconf git wget
+    apt-get install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential autoconf git wget lrzsz
     F_LOG_EXIT " 安装基础库 " ${log_file}
 
     F_SAVE_STEP "INSTALL BASE" ${step_file}
