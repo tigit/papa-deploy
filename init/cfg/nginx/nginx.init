@@ -155,7 +155,7 @@ start() {
     else
         start-stop-daemon --start --quiet --chuid \
         $RUNAS --pidfile $PIDSPATH/$PIDFILE --exec $DAEMON \
-        -- -c $NGINX_CONF_FILE -p $NGINXPATH
+        -- -c $NGINX_CONF_FILE -p $VARPATH
         status=$?
         setFilePerms
 
