@@ -48,7 +48,7 @@ function f_add_bin_path
         echo 'export PATH=$PATH:'${bin}'' >> /etc/profile.d/devel.sh
     fi
     
-    if ! echo "${PATH}" | grep -q grep -q "${bin}"; then
+    if ! echo "${PATH}" | grep -q "${bin}"; then
         export PATH=${PATH}:${bin}
     fi
 
@@ -79,7 +79,7 @@ function checkout_reps
     git clone https://github.com/tigit/papa-console.git ${www_path}/console
     F_LOG_EXIT " 部署服务器代码 " ${log_file}
     
-    F_SAVE_STEP "CHECKOUT PKGS" ${step_file}
+    F_SAVE_STEP "CHECKOUT REPS" ${step_file}
 }
 
 function download_pkgs
@@ -315,7 +315,7 @@ function install_redis
 
 source ./util.sh
 
-MAKE_J=8
+MAKE_J=2
 
 data_path=/data
 opt_path=${data_path}/opt
@@ -354,6 +354,10 @@ if [[ -z "${host_name}" ]]; then
 fi
 
 F_LOG_EXIT " 检查参数 ${host_name} " ${log_file}
+
+if [ -f /etc/profile.d/devel.sh ]; then
+    source /etc/profile.d/devel.sh
+fi
 
 install_base
 
